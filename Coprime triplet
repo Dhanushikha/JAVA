@@ -1,0 +1,40 @@
+import java.util.*;
+public class Main
+{
+    public static int gcd(int a,int b)
+    {
+        int temp;
+        while(b!=0)
+        {
+            temp=b;
+            b=a%b;
+            a=temp;
+        }
+        return a;
+    }
+    public static boolean coprime(int a,int b)
+    {
+        return gcd(a,b)==1;
+    }
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number: ");
+        int a = sc.nextInt();
+        for(int i =5;i<=a;i++)
+        {
+            for(int j=4;j<i;j++)
+            {
+                for(int k=3;k<j;k++)
+                {
+                    if(j*j + k*k == i*i && coprime(i,j) && coprime(j,k) && coprime(i,k))
+                System.out.println(k+" "+j+" "+i+" ");
+                }
+            }
+        }
+        
+    }
+}
+        
+    
+        
