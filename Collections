@@ -1,0 +1,32 @@
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter digit1: ");
+        int ip1=sc.nextInt();
+         System.out.println("Enter digit2: ");
+        int ip2=sc.nextInt();
+         System.out.println("Enter digit3: ");
+        int ip3=sc.nextInt();
+        System.out.println(light(ip1,ip2,ip3));
+    
+    }
+    public static int light(int ip1,int ip2,int ip3){
+        ArrayList<Integer> digit1=dark(ip1);
+        ArrayList<Integer> digit2=dark(ip2);
+        ArrayList<Integer> digit3=dark(ip3);
+        int a=Collections.max(digit1)+Collections.max(digit2)+Collections.max(digit3);
+        int b=Collections.min(digit1)+Collections.min(digit2)+Collections.min(digit3);
+        return a+b;
+    }
+    public static ArrayList<Integer> dark(int a){
+        int temp=0;
+        ArrayList<Integer> ab=new ArrayList<>();
+        while(a!=0){
+            temp=a%10;
+            ab.add(temp);
+            a/=10;
+        } 
+        return ab;
+    } 
+}
