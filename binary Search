@@ -1,0 +1,35 @@
+import java.util.*;
+public class Main
+{
+    public static int calculate(int[] arr,int key){
+        int start=0;
+        int end=arr.length-1;
+        while(start<=end){
+            int mid=(start+end)/2;
+            if(arr[mid]==key){
+                return mid;
+            }
+            else if(arr[mid]<key){
+                return mid+1;
+            }
+            else{
+               return mid-1; 
+            }
+        }
+            return -1;
+        
+    }
+	public static void main(String[] args) {
+		int[] arr={12,4,5,15};
+		Scanner ak=new Scanner(System.in);
+		System.out.print("Enter the element to be search: ");
+		int key=ak.nextInt();
+		int res=calculate(arr,key);
+		if(res!=-1){
+		    System.out.println("The element is found in "+res);
+		}
+		else{
+		    System.out.println("The element is not found."); 
+		}
+	}
+}
