@@ -1,0 +1,24 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        if (args.length > 0) {
+            String name = args[0]; 
+
+            
+            Set<Character> uniqueChars = new HashSet<>();
+
+            
+            System.out.println("Name with duplicate characters removed:");
+            for (char ch : name.toCharArray()) {
+                if (uniqueChars.add(ch)) { 
+                    System.out.print(ch);
+                }
+            }
+            System.out.println(); 
+        } else {
+            System.out.println("Please provide your name as a command-line argument.");
+        }
+    }
