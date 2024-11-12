@@ -1,0 +1,66 @@
+import java.util.*;
+
+class Main {
+    public static int beast(String str) {
+        Stack<Integer> num = new Stack<>();
+        Stack<Character> op = new Stack<>();
+        int i = 0;
+        
+        while (i < str.length()) {
+            if (Character.isDigit(str.charAt(i))) {
+                int a = 0;
+                while (i < str.length() && Character.isDigit(str.charAt(i))) {
+                    a = a * 10 + (str.charAt(i) - '0');
+                    i++;
+                }
+                num.push(a);
+            } else if (str.charAt(i) == '+' || str.charAt(i) == '-' || str.charAt(i) == '*' || str.charAt(i) == '/') {
+                while (!op.isEmpty() && precedence(op.peek()) >= precedence(str.charAt(i))) {
+                    char sym = op.pop();
+                    int num2 = num.pop();
+                    int num1 = num.pop();
+                    num.push(operation(sym, num1, num2));
+                }
+                op.push(str.charAt(i));
+                i++;
+            } else {
+                i++;
+            }
+        }
+        
+        while (!op.isEmpty()) {
+            char sym = op.pop();
+            int num2 = num.pop();
+            int num1 = num.pop();
+            num.push(operation(sym, num1, num2));
+        }
+        
+        return num.pop();
+    }
+    
+    public static int precedence(char ch) {
+        switch (ch) {
+            case '+':
+            case '-': return 1;
+            case '*':
+            case '/': return 2;
+        }
+        return -1;
+    }
+    
+    public static int operation(char sym, int num1, int num2) {
+        switch (sym) {
+            case '+': return num1 + num2;
+            case '-': return num1 - num2;
+            case '*': return num1 * num2;
+            case '/': return num1 / num2;
+        }
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        String str = "7+8-9-1";
+        int result = beast(str);
+        System.out.println("The Result is: " + result);
+    }
+}
