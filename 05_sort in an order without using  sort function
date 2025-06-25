@@ -1,0 +1,39 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] risks = {2,1,0,2,0,1};
+        int a = 0;   
+        int b= 0; 
+        int c = 0;    
+        for (int risk : risks) {
+            if (risk == 0) {
+                a++;
+            }
+            else if (risk == 1){
+             b++;
+            }
+            else if (risk == 2){ 
+                c++;
+        }
+        }
+        int index = 0;
+
+        while (a> 0){ 
+            risks[index++] = 0;
+            a--;
+        }
+        while (b > 0) {
+            risks[index++] = 1;
+            b--;
+        }
+        while (c > 0) {
+            risks[index++] = 2;
+            c--;
+        }
+        
+        for (int risk : risks) {
+            System.out.print(risk + " ");
+        }
+    
+}
+}
+
